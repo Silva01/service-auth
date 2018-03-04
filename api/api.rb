@@ -3,6 +3,7 @@ require 'json'
 require_relative '../src/service/service.rb'
 require_relative './validar.rb'
 require_relative '../src/util/p_array'
+require_relative '../src/util/p_common'
 
 post '/service' do
   content_type :json
@@ -34,7 +35,9 @@ post '/service' do
     {:id => 'auth', :jsonrpc => '2.0', :result => result}.to_json
 
   else
-    result = method.call method_params['params']
+    p_common = PCommon.new
+    p_common.set_dados method_params
+    result = method.call p_common
 
     {:id => 'auth', :jsonrpc => '2.0', :result => result}.to_json
 
