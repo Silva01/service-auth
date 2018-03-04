@@ -4,8 +4,7 @@ require 'jwt'
 class Token
 
   def initialize
-    # @chave = ENV['AUTH_SERVICE_METRICS_KEY']
-    @chave = 'teste'
+    @chave = ENV['AUTH_SERVICE_METRICS_KEY']
   end
 
   def generate_token(payload)
