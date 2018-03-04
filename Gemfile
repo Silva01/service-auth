@@ -14,3 +14,5 @@ gem 'json'
 
 gem 'jwt'
 
+gem 'sinatra-cross_origin'
+
