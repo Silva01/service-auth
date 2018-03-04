@@ -21,7 +21,8 @@ class Service
     end
   end
 
-  def validar_token(p_params)
-    @token.validar_token(p_params)
+  def validar_token(p_commom)
+    params = p_commom.get_auth
+    @token.validar_token(params)
   end
 end
