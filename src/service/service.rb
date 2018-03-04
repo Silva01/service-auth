@@ -13,12 +13,7 @@ class Service
     login = Login.new
     params = p_array.get_value
     user_name = login.logar params['usuario'], params['senha']
-
-    if user_name.nil?
-      raise 'Usuario ou Senha Inválida!', -504
-    else
-      @token.generate_token ({:data => user_name })
-    end
+    @token.generate_token ({:data => user_name })
   end
 
   def validar_token(p_commom)

@@ -31,7 +31,7 @@ class MysqlService
       raise 'Essa função não suporta SELECT'
     end
 
-    @client.prepare(query)
+    @client.query(query)
   end
 
   private
