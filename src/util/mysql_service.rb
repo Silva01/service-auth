@@ -4,7 +4,7 @@ require 'yaml'
 
 class MysqlService
   def initialize
-    config = File.read('../config-db.yml')
+    config = File.read('config-db.yml')
     dbConfig = YAML.load config
 
     conexao(
@@ -31,7 +31,7 @@ class MysqlService
       raise 'Essa função não suporta SELECT'
     end
 
-    @client.prepare(query)
+    @client.query(query)
   end
 
   private

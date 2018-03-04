@@ -1,5 +1,6 @@
 
 require 'jwt'
+require_relative '../../../src/service/model/login'
 
 class Token
 
@@ -13,11 +14,17 @@ class Token
 
   def validar_token(token)
     begin
-      dados = JWT.decode token, @chave, true, { :algorithm => 'HS256' }
-      dados[0]['data'] = dados[0]['data'].to_i + 2
-      generate_token({:data => dados[0]['data']})
+      decode_token = JWT.decode token, @chave, true, { :algorithm => 'HS256' }
+      valid = validar_token_banco decode_token[0]['data']['token']
+      { :validate => valid }
     rescue Exception
-      '-503'
+      { :error => '-503', :message => 'Token inválido' }
     end
   end
+
+  private
+    def validar_token_banco (token_interno)
+      login = Login.new
+      login.validar_token_interno token_interno
+    end
 end
