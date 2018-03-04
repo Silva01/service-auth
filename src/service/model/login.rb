@@ -9,7 +9,7 @@ class Login
 
   def logar(usuario, senha)
     dados = []
-    result = @mysql.select "SELECT * FROM metrics.usuarios WHERE user = #{usuario} AND senha = md5(#{senha})"
+    result = @mysql.select "SELECT * FROM metrics.users_metrics WHERE user = '#{usuario}' AND password = md5('#{senha}')"
     result.each do |r|
       dados.push [r['nome']]
     end

@@ -4,7 +4,7 @@ require 'yaml'
 
 class MysqlService
   def initialize
-    config = File.read('../config-db.yml')
+    config = File.read('config-db.yml')
     dbConfig = YAML.load config
 
     conexao(

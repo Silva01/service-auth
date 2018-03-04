@@ -1,7 +1,7 @@
 
 class PArray
   def set_dados(dados)
-    if dados['params'].class == Array
+    if dados['params'].class == Hash
       @auth = dados['auth']
       @params = dados['params']
     else

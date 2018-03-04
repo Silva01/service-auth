@@ -1,17 +1,27 @@
 
 require_relative '../util/mysql_service.rb'
 require_relative './model/token'
+require_relative './model/login'
 
 class Service
-  def login(params)
-    token = Token.new
-    contador = 1
 
-    token.generate_token ({:data => contador })
+  def initialize
+    @token = Token.new
   end
 
-  def validar_token(params)
-    token = Token.new
-    token.validar_token(params['token'])
+  def login(p_array)
+    login = Login.new
+    params = p_array.get_value
+    user_name = login.logar params['usuario'], params['senha']
+
+    if user_name.nil?
+      raise 'Usuario ou Senha Inválida!', -504
+    else
+      @token.generate_token ({:data => user_name })
+    end
+  end
+
+  def validar_token(p_params)
+    @token.validar_token(p_params)
   end
 end
