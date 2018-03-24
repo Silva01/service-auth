@@ -6,10 +6,6 @@ require_relative './validar.rb'
 require_relative '../src/util/p_array'
 require_relative '../src/util/p_common'
 
-configure do
-  enable :cross_origin
-end
-
 post '/service' do
   content_type :json
   response.headers["Access-Control-Allow-Origin"] = "*"
@@ -49,12 +45,4 @@ post '/service' do
 
   end
 
-end
-
-options "*" do
-  response.headers["Allow"] = "HEAD,GET,PUT,POST,DELETE,OPTIONS"
-
-  response.headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Cache-Control, Accept"
-  response.headers["Access-Control-Allow-Origin"] = "*"
-  200
 end
