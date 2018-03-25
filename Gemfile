@@ -8,7 +8,7 @@ gem 'sinatra'
 
 gem 'mysql2'
 
-gem 'yaml'
+# gem 'yaml'
 
 gem 'json'
 

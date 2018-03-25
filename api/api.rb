@@ -6,6 +6,8 @@ require_relative './validar.rb'
 require_relative '../src/util/p_array'
 require_relative '../src/util/p_common'
 
+set :bind, '0.0.0.0'
+
 post '/service' do
   content_type :json
   response.headers["Access-Control-Allow-Origin"] = "*"
