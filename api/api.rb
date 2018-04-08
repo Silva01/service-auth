@@ -16,21 +16,10 @@ post '/' do
 
   params = JSON.parse(request.body.read.to_s)
 
-  if params['params'].class == Hash
+  p_array = PArray.new
+  p_array.set_dados params
+  result = servico.login p_array
 
-    p_array = PArray.new
-    p_array.set_dados params
-    result = servico.login p_array
-
-    {:id => 'auth', :jsonrpc => '2.0', :result => result}.to_json
-
-  else
-    p_common = PCommon.new
-    p_common.set_dados params
-    result = method.call p_common
-
-    {:id => 'auth', :jsonrpc => '2.0', :result => result}.to_json
-
-  end
+  {:id => 'auth', :jsonrpc => '2.0', :result => result}.to_json
 
 end
