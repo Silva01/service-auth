@@ -16,7 +16,7 @@ post '/' do
 
   params = JSON.parse(request.body.read.to_s)
 
-  if method_params['params'].class == Hash
+  if params['params'].class == Hash
 
     p_array = PArray.new
     p_array.set_dados params
