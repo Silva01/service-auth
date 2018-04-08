@@ -16,8 +16,6 @@ post '/' do
 
   params = JSON.parse(request.body.read.to_s)
 
-  method = servico.method(method_params['method'])
-
   if method_params['params'].class == Hash
 
     p_array = PArray.new
